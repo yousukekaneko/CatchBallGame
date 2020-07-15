@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     //Status
     private var actionFlg = false
+    private var startFlg = false
 
     private fun changePos() {
 
