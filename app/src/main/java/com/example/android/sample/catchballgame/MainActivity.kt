@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Statu flg
+    //Status flg
     private var actionFlg = false
     private var startFlg = false
 
