@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Status
+    //Statu flg
     private var actionFlg = false
     private var startFlg = false
 
@@ -52,20 +52,27 @@ class MainActivity : AppCompatActivity() {
         black.setX(-80.0f)
         black.setY(-80.0f)
 
-        startLabel.visibility = View.INVISIBLE
         boyX = 500.0f
-
-        timer.schedule(timerTask, 0, 20)
 
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
 
-        if (event?.action == MotionEvent.ACTION_DOWN) {
-            actionFlg = true
-        } else if (event?.action == MotionEvent.ACTION_UP){
-            actionFlg = false
+        if (startFlg == false) {
+            startFlg = true
+            startLabel.visibility = View.GONE
+
+            timer.schedule(timerTask, 0, 20)
+
+        } else  {
+
+            if (event?.action == MotionEvent.ACTION_DOWN) {
+                actionFlg = true
+            } else if (event?.action == MotionEvent.ACTION_UP){
+                actionFlg = false
+            }
         }
+
         return true
     }
 }
