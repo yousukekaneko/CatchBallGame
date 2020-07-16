@@ -10,7 +10,12 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    var boyX : Float = 0.0f
+    //position
+    var boxY : Float = 0.0f
+
+    //size
+    var flameHeight : Int = 0
+    var boxSize : Int = 0
 
     //Handler Timer
     val handler = Handler()
@@ -33,12 +38,17 @@ class MainActivity : AppCompatActivity() {
 
         if (actionFlg) {
             //触っている時
-            boyX -= 20
+            boxY -= 20
         } else {
             //離している時
-            boyX += 20
+            boxY += 20
         }
-        lion.setY(boyX)
+
+        //アイコンを外に出さないようにする処理
+        if (boxY < 0.0f) boxY = 0.0f
+        if (boxY > flameHeight - boxSize) boxY = flameHeight - boxSize.toFloat()
+
+        lion.setY(boxY)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         black.setX(-80.0f)
         black.setY(-80.0f)
 
-        boyX = 500.0f
+        boxY = 500.0f
 
     }
 
@@ -60,6 +70,12 @@ class MainActivity : AppCompatActivity() {
 
         if (startFlg == false) {
             startFlg = true
+
+            flameHeight = frame.height
+
+            boxY = lion.y
+            boxSize = lion.height
+
             startLabel.visibility = View.GONE
 
             timer.schedule(timerTask, 0, 20)
