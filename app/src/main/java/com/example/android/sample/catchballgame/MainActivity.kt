@@ -33,11 +33,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     //screen size
-    val wm = windowManager
-    val display = wm.defaultDisplay
-    val size = Point()
+    private val wm = windowManager
+    private val size = Point()
+    private val display = wm.defaultDisplay.getSize(size)
 
-
+    private val screenWidth = size.x
+    private val screenHeight = size.y
 
     //Status flg
     private var actionFlg = false
