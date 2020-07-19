@@ -1,10 +1,12 @@
 package com.example.android.sample.catchballgame
 
+import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -29,6 +31,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    //screen size
+    private val wm = windowManager
+    private val size = Point()
+    private val display = wm.defaultDisplay.getSize(size)
+
+    private val screenWidth = size.x
+    private val screenHeight = size.y
 
     //Status flg
     private var actionFlg = false
@@ -61,8 +71,6 @@ class MainActivity : AppCompatActivity() {
         point2.setY(-80.0f)
         black.setX(-80.0f)
         black.setY(-80.0f)
-
-        boxY = 500.0f
 
     }
 
