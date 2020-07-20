@@ -14,6 +14,14 @@ class MainActivity : AppCompatActivity() {
 
     //position
     var boxY : Float = 0.0f
+    var point1X : Float = 0.0f
+    var point1Y : Float = 0.0f
+    var point2X : Float = 0.0f
+    var point2Y : Float = 0.0f
+    var blackX : Float = 0.0f
+    var blackY : Float = 0.0f
+
+
 
     //size
     var flameHeight : Int = 0
