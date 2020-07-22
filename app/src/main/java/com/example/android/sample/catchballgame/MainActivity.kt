@@ -9,6 +9,7 @@ import android.view.View
 import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     var point2Y : Float = 0.0f
     var blackX : Float = 0.0f
     var blackY : Float = 0.0f
-
 
 
     //size
@@ -53,6 +53,14 @@ class MainActivity : AppCompatActivity() {
     private var startFlg = false
 
     private fun changePos() {
+
+        //point1
+        point1X -= 12
+        if (point1X < 0) {
+            point1X = screenWidth + 20.toFloat()
+            point1Y = Math.floor((Math.random() * (flameHeight - point1.height()))).toFloat()
+
+        }
 
         if (actionFlg) {
             //触っている時
