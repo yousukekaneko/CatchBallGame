@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.math.floor
@@ -58,9 +57,10 @@ class MainActivity : AppCompatActivity() {
         point1X -= 12
         if (point1X < 0) {
             point1X = screenWidth + 20.toFloat()
-            point1Y = Math.floor((Math.random() * (flameHeight - point1.height()))).toFloat()
-
+            point1Y = floor(Math.random() * (flameHeight - point1.height)).toFloat()
         }
+        point1.x = point1X
+        point1.y = point1Y
 
         if (actionFlg) {
             //触っている時
