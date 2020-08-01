@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //screen size
-    private val wm = windowManager
+    private val wm = windowManager!!
     private val size = Point()
     private val display = wm.defaultDisplay.getSize(size)
 
