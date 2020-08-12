@@ -4,6 +4,7 @@ import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.Display
 import android.view.MotionEvent
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,8 +24,16 @@ class MainActivity : AppCompatActivity() {
 
 
     //size
-    var flameHeight : Int = 0
-    var boxSize : Int = 0
+    private var flameHeight : Int = 0
+    private var boxSize : Int = 0
+
+    //screen size
+//    private val wm = windowManager
+    private val size = Point()
+//    var display = wm.defaultDisplay.getSize(size)
+
+    private var screenWidth = size.x
+    private var screenHeight = size.y
 
     //Handler Timer
     val handler = Handler()
@@ -39,14 +48,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //screen size
-    private val wm = windowManager!!
-    private val size = Point()
-    private val display = wm.defaultDisplay.getSize(size)
-
-    private val screenWidth = size.x
-    private val screenHeight = size.y
-
     //Status flg
     private var actionFlg = false
     private var startFlg = false
@@ -54,13 +55,31 @@ class MainActivity : AppCompatActivity() {
     private fun changePos() {
 
         //point1
-        point1X -= 12
+        point1X -= 16
         if (point1X < 0) {
-            point1X = screenWidth + 20.toFloat()
+            point1X = screenWidth + 500.toFloat()
             point1Y = floor(Math.random() * (flameHeight - point1.height)).toFloat()
         }
         point1.x = point1X
         point1.y = point1Y
+
+        //black
+        blackX -= 16
+        if (blackX < 0) {
+            blackX = screenWidth + 10.toFloat()
+            blackX = floor(Math.random() * (flameHeight - black.height)).toFloat()
+        }
+        black.x = blackX
+        black.y = blackY
+
+        //point2
+        point2X -= 20
+        if (point2X < 0) {
+            point2X = screenWidth + 5000.toFloat()
+            point2Y = floor(Math.random() * (flameHeight - point2.height)).toFloat()
+        }
+        point2.x = point2X
+        point2.y = point2Y
 
         if (actionFlg) {
             //触っている時
